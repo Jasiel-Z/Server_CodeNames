@@ -12,8 +12,6 @@ namespace Services
     //Aquí van las implementaciones de todos los servicios del juego
     public partial class GameService : IPlayerManager
     {
-
-
         public void AddUserAccountToDatabase(string username, string email, string password)
         {
             using (var databaseContext = new CodeNamesBDEntities())
@@ -63,10 +61,10 @@ namespace Services
                 return playerAcountt;
 
             }
+
+
         }
 
-
-
-
     }
+
 }
