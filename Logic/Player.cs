@@ -11,8 +11,6 @@ namespace Logic
     [DataContract]
     public class Player
     {
-
-
         private int playerId;
         private string nickname;
         private string password;
@@ -43,7 +41,7 @@ namespace Logic
         }
         public override string ToString()
         {
-            return $"Nick-{nickname}Pass-{password}email-{email}cards-";
+            return $"Nick-{nickname}Pass-{password}email-{email}";
         }
         #endregion
     }

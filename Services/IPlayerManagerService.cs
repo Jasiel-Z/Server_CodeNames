@@ -11,7 +11,7 @@ namespace Services
 
 {
     [ServiceContract]
-    public interface IPlayerManager
+    public interface IPlayerManagerService
     {
         [OperationContract]
         void AddUserAccountToDatabase(string nickname, string email, string password);

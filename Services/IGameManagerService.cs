@@ -8,7 +8,7 @@ namespace Services
 {
     //Aquí van las firmas de la lógica de la partida en juego
 
-    public interface IGameManager
+    public interface IGameManagerService
     {
 
     }
