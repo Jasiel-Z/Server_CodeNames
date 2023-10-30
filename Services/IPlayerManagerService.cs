@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Services
 
 {
     [ServiceContract]
-    public interface IPlayerManager
+    public interface IPlayerManagerService
     {
         [OperationContract]
         void AddUserAccountToDatabase(string nickname, string email, string password);
@@ -23,5 +24,7 @@ namespace Services
         void ShowUsersAccounts();
 
 
+
     }
+
 }

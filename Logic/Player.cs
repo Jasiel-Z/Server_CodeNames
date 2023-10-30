@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,12 +12,12 @@ namespace Logic
     [DataContract]
     public class Player
     {
-
-
         private int playerId;
         private string nickname;
         private string password;
         private string email;
+        private OperationContext aOperationContext;
+        public OperationContext AOperationContext { get { return aOperationContext; } set { aOperationContext = value; } }
 
         #region Properties
         [DataMember]
@@ -28,6 +29,7 @@ namespace Logic
         public string Password { get { return password; } set { password = value; } }
         [DataMember]
         public string Email { get { return email; } set { email = value; } }
+
         
 
         #endregion
@@ -43,7 +45,7 @@ namespace Logic
         }
         public override string ToString()
         {
-            return $"Nick-{nickname}Pass-{password}email-{email}cards-";
+            return $"Nick-{nickname}Pass-{password}email-{email}";
         }
         #endregion
     }
