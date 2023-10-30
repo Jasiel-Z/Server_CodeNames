@@ -53,52 +53,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeNamesBD.Context.cs">
+    <Compile Include="CodeNamesDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CodeNamesBD.Context.tt</DependentUpon>
+      <DependentUpon>CodeNamesDBModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeNamesBD.cs">
+    <Compile Include="CodeNamesDBModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CodeNamesBD.tt</DependentUpon>
+      <DependentUpon>CodeNamesDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeNamesBD.Designer.cs">
+    <Compile Include="CodeNamesDBModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CodeNamesBD.edmx</DependentUpon>
+      <DependentUpon>CodeNamesDBModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Player.cs">
-      <DependentUpon>CodeNamesBD.tt</DependentUpon>
+      <DependentUpon>CodeNamesDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="CodeNamesBD.edmx">
+    <EntityDeploy Include="CodeNamesDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CodeNamesBD.Designer.cs</LastGenOutput>
+      <LastGenOutput>CodeNamesDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="CodeNamesBD.edmx.diagram">
-      <DependentUpon>CodeNamesBD.edmx</DependentUpon>
+    <None Include="CodeNamesDBModel.edmx.diagram">
+      <DependentUpon>CodeNamesDBModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CodeNamesBD.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CodeNamesBD.edmx</DependentUpon>
-      <LastGenOutput>CodeNamesBD.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="CodeNamesBD.edmx.sql" />
-    <Content Include="CodeNamesBD.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CodeNamesBD.edmx</DependentUpon>
-      <LastGenOutput>CodeNamesBD.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="CodeNamesDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CodeNamesDBModel.edmx</DependentUpon>
+      <LastGenOutput>CodeNamesDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CodeNamesDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CodeNamesDBModel.edmx</DependentUpon>
+      <LastGenOutput>CodeNamesDBModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

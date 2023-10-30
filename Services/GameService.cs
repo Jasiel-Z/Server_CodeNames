@@ -3,6 +3,7 @@ using Logic;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,16 +17,16 @@ namespace Services
 
         public void AddUserAccountToDatabase(string username, string email, string password)
         {
-            using (var databaseContext = new CodeNamesBDEntities())
+            using (var databaseContext = new CodeNamesDBEntities())
             {
                 var user = new DataModels.Player
                 {
-                    Username = username,
+                    Nickname = username,
                     Email = email,
                     Password = password
                 };
-
-                databaseContext.PlayerSet.Add(user);
+                
+                databaseContext.Player.Add(user);
                 databaseContext.SaveChanges();
             }
         }
@@ -37,17 +38,17 @@ namespace Services
 
         public void ShowUsersAccounts()
         {
-            using (var databaseContext = new CodeNamesBDEntities())
+            using (var databaseContext = new CodeNamesDBEntities())
             {
                 var user = new DataModels.Player();
-                var query = from b in databaseContext.PlayerSet
+                var query = from b in databaseContext.Player
                             orderby b.Player_Id
                             select b;
 
                 Console.WriteLine("All blogs in the database:");
                 foreach (var item in query)
                 {
-                    Console.WriteLine(item.Username);
+                    Console.WriteLine(item.Nickname);
                     Console.WriteLine(item.Email);
                 }
             }
@@ -55,10 +56,10 @@ namespace Services
 
         public DataModels.Player Login(string nickname, string password)
         {
-            using (var databaseContext = new CodeNamesBDEntities())
+            using (var databaseContext = new CodeNamesDBEntities())
             {
-                var playerAcountt = databaseContext.PlayerSet
-                   .FirstOrDefault(u => u.Username == nickname && u.Password == password);
+                var playerAcountt = databaseContext.Player
+                   .FirstOrDefault(u => u.Nickname == nickname && u.Password == password);
 
                 return playerAcountt;
 
