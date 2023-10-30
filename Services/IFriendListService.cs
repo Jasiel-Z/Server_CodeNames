@@ -11,31 +11,24 @@ namespace Services
     public interface IFriendListService
     {
         [OperationContract]
-        void SendFriendRequest(string toUser);
+        void SendFriendshipRequest(int idSender, int idReceiver);
 
         [OperationContract]
-        void AcceptFriendRequest(string fromUser);
-
-        [OperationContract(IsOneWay = true)]
-        void GetFriendList();
+        void ResponseToFriendshipRequest(String response, int idRequest);
 
     }
 
     [ServiceContract]
     public interface IFriendListServiceCallback
     {
+        [OperationContract]
+        void showGlobalUsers();
 
         [OperationContract]
-        void FriendRequestReceived(string fromUser);
+        void showFriends();
 
-        [OperationContract]
-        void FriendRequestAccepted(string fromUser);
 
-        [OperationContract]
-        void FriendListUpdated(List<string> friends);
 
-        void ShowFriendList();
 
-       
     }
 }

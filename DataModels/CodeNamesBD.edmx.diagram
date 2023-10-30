@@ -5,7 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9040ea67e6884e6eb5be901f22c15018" Name="Diagram1">
-        <EntityTypeShape EntityType="CodeNamesBDModel.Player" Width="1.875" PointX="2.875" PointY="1.125" />
+        <EntityTypeShape EntityType="CodeNamesBDModel.Player" Width="1.875" PointX="0.75" PointY="2.75" />
+        <EntityTypeShape EntityType="CodeNamesBDModel.FrienshipRequest" PointX="4.25" PointY="2.75" Width="2" />
+        <EntityTypeShape EntityType="CodeNamesBDModel.Friendship" Width="1.5" PointX="4.375" PointY="5.375" />
+        <AssociationConnector Association="CodeNamesBDModel.PlayerRequest_Sender" />
+        <AssociationConnector Association="CodeNamesBDModel.PlayerRequest_Receiver" />
+        <AssociationConnector Association="CodeNamesBDModel.PlayerFriendship1" />
+        <AssociationConnector Association="CodeNamesBDModel.PlayerFriendship2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,11 +12,13 @@ namespace DataModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Player
+    public partial class Friendship
     {
-        public int Player_Id { get; set; }
-        public string Username { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public int IdFrienship { get; set; }
+        public int IdPlayer1 { get; set; }
+        public int IdPlayer2 { get; set; }
+    
+        public virtual Player Player1 { get; set; }
+        public virtual Player Player2 { get; set; }
     }
 }

@@ -12,11 +12,13 @@ namespace DataModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Player
+    public partial class FrienshipRequest
     {
-        public int Player_Id { get; set; }
-        public string Username { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public int IdFriendshipRequest { get; set; }
+        public int IdSenderPlayer { get; set; }
+        public int IdReceiverPlayer { get; set; }
+    
+        public virtual Player SenderPlayer { get; set; }
+        public virtual Player ReceiverPlayer { get; set; }
     }
 }
