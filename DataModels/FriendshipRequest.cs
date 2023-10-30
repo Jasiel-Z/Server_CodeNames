@@ -12,7 +12,7 @@ namespace DataModels
     using System;
     using System.Collections.Generic;
     
-    public partial class FrienshipRequest
+    public partial class FriendshipRequest
     {
         public int IdFriendshipRequest { get; set; }
         public int IdSenderPlayer { get; set; }

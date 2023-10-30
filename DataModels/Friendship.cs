@@ -14,7 +14,7 @@ namespace DataModels
     
     public partial class Friendship
     {
-        public int IdFrienship { get; set; }
+        public int IdFriendship { get; set; }
         public int IdPlayer1 { get; set; }
         public int IdPlayer2 { get; set; }
     

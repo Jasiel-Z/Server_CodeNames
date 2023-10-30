@@ -44,7 +44,7 @@ namespace Services
             {
                 var user = new DataModels.Player();
                 var query = from b in databaseContext.PlayerSet
-                            orderby b.Player_Id
+                            orderby b.IdPlayer
                             select b;
 
                 Console.WriteLine("All blogs in the database:");
@@ -79,13 +79,13 @@ namespace Services
         {
             using (var databaseContext = new CodeNamesBDEntities())
             {
-                var frienshipRequest = new DataModels.FrienshipRequest
+                var frienshipRequest = new DataModels.FriendshipRequest
                 {
                     IdReceiverPlayer = idReceiver,
                     IdSenderPlayer = idSender
                 };
 
-                databaseContext.FrienshipRequestSet.Add(frienshipRequest);
+                databaseContext.FriendshipRequestSet.Add(frienshipRequest);
                 databaseContext.SaveChanges();
             }
         }
@@ -93,10 +93,10 @@ namespace Services
         public void ResponseToFriendshipRequest(String response, int idRequest)
         {
             var databaseContext = new CodeNamesBDEntities();
-            FrienshipRequest frienshipRequest = new FrienshipRequest();
+            FriendshipRequest frienshipRequest = new FriendshipRequest();
             using (databaseContext)
             {
-                frienshipRequest = databaseContext.FrienshipRequestSet.FirstOrDefault(u => u.IdFriendshipRequest == idRequest);
+                frienshipRequest = databaseContext.FriendshipRequestSet.FirstOrDefault(u => u.IdFriendshipRequest == idRequest);
             }
 
             if (response == "accept")
@@ -114,8 +114,18 @@ namespace Services
                 }
             }
 
-            databaseContext.FrienshipRequestSet.Remove(frienshipRequest);
+            databaseContext.FriendshipRequestSet.Remove(frienshipRequest);
             databaseContext.SaveChanges();
+        }
+
+        public List<DataModels.Player> GetGlobalUsers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<DataModels.Player> GetFriends(int idUser)
+        {
+            throw new NotImplementedException();
         }
     }
 
