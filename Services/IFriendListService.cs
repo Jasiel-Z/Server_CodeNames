@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -15,6 +16,12 @@ namespace Services
 
         [OperationContract]
         void ResponseToFriendshipRequest(String response, int idRequest);
+
+        [OperationContract]
+        List<Player> GetGlobalUsers();
+
+        [OperationContract]
+        List<Player> GetFriends(int idUser);
 
     }
 

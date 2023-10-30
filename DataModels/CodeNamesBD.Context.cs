@@ -26,7 +26,7 @@ namespace DataModels
         }
     
         public virtual DbSet<Player> PlayerSet { get; set; }
-        public virtual DbSet<FrienshipRequest> FrienshipRequestSet { get; set; }
+        public virtual DbSet<FriendshipRequest> FriendshipRequestSet { get; set; }
         public virtual DbSet<Friendship> FriendshipSet { get; set; }
     }
 }

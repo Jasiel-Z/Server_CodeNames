@@ -7,15 +7,15 @@
     <Schema Namespace="CodeNamesBDModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="CodeNamesBDModelStoreContainer">
     <EntitySet Name="PlayerSet" EntityType="CodeNamesBDModel.Store.PlayerSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="FrienshipRequestSet" EntityType="CodeNamesBDModel.Store.FrienshipRequestSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FriendshipRequestSet" EntityType="CodeNamesBDModel.Store.FriendshipRequestSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="FriendshipSet" EntityType="CodeNamesBDModel.Store.FriendshipSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="PlayerFrienshipRequest" Association="CodeNamesBDModel.Store.PlayerRequest_Sender">
       <End Role="Player" EntitySet="PlayerSet" />
-      <End Role="FrienshipRequest" EntitySet="FrienshipRequestSet" />
+      <End Role="FrienshipRequest" EntitySet="FriendshipRequestSet" />
     </AssociationSet>
     <AssociationSet Name="PlayerFrienshipRequest1" Association="CodeNamesBDModel.Store.PlayerRequest_Receiver">
       <End Role="Player" EntitySet="PlayerSet" />
-      <End Role="FrienshipRequest" EntitySet="FrienshipRequestSet" />
+      <End Role="FrienshipRequest" EntitySet="FriendshipRequestSet" />
     </AssociationSet>
     <AssociationSet Name="PlayerFriendship" Association="CodeNamesBDModel.Store.PlayerFriendship1">
       <End Role="Player" EntitySet="PlayerSet" />
@@ -28,14 +28,14 @@
   </EntityContainer>
   <EntityType Name="PlayerSet">
     <Key>
-      <PropertyRef Name="Player_Id" />
+      <PropertyRef Name="IdPlayer" />
     </Key>
-    <Property Name="Player_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPlayer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="30" />
     <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
   </EntityType>
-  <EntityType Name="FrienshipRequestSet">
+  <EntityType Name="FriendshipRequestSet">
     <Key>
       <PropertyRef Name="IdFriendshipRequest" />
     </Key>
@@ -45,18 +45,18 @@
   </EntityType>
   <EntityType Name="FriendshipSet">
     <Key>
-      <PropertyRef Name="IdFrienship" />
+      <PropertyRef Name="IdFriendship" />
     </Key>
-    <Property Name="IdFrienship" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdFriendship" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdPlayer1" Type="int" Nullable="false" />
     <Property Name="IdPlayer2" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="PlayerRequest_Sender">
     <End Role="Player" Type="CodeNamesBDModel.Store.PlayerSet" Multiplicity="1" />
-    <End Role="FrienshipRequest" Type="CodeNamesBDModel.Store.FrienshipRequestSet" Multiplicity="*" />
+    <End Role="FrienshipRequest" Type="CodeNamesBDModel.Store.FriendshipRequestSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Player">
-        <PropertyRef Name="Player_Id" />
+        <PropertyRef Name="IdPlayer" />
       </Principal>
       <Dependent Role="FrienshipRequest">
         <PropertyRef Name="IdSenderPlayer" />
@@ -65,10 +65,10 @@
   </Association>
   <Association Name="PlayerRequest_Receiver">
     <End Role="Player" Type="CodeNamesBDModel.Store.PlayerSet" Multiplicity="1" />
-    <End Role="FrienshipRequest" Type="CodeNamesBDModel.Store.FrienshipRequestSet" Multiplicity="*" />
+    <End Role="FrienshipRequest" Type="CodeNamesBDModel.Store.FriendshipRequestSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Player">
-        <PropertyRef Name="Player_Id" />
+        <PropertyRef Name="IdPlayer" />
       </Principal>
       <Dependent Role="FrienshipRequest">
         <PropertyRef Name="IdReceiverPlayer" />
@@ -80,7 +80,7 @@
     <End Role="Friendship" Type="CodeNamesBDModel.Store.FriendshipSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Player">
-        <PropertyRef Name="Player_Id" />
+        <PropertyRef Name="IdPlayer" />
       </Principal>
       <Dependent Role="Friendship">
         <PropertyRef Name="IdPlayer1" />
@@ -92,7 +92,7 @@
     <End Role="Friendship" Type="CodeNamesBDModel.Store.FriendshipSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Player">
-        <PropertyRef Name="Player_Id" />
+        <PropertyRef Name="IdPlayer" />
       </Principal>
       <Dependent Role="Friendship">
         <PropertyRef Name="IdPlayer2" />
@@ -105,15 +105,15 @@
       <Schema Namespace="CodeNamesBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="CodeNamesBDEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="PlayerSet" EntityType="CodeNamesBDModel.Player" />
-          <EntitySet Name="FrienshipRequestSet" EntityType="CodeNamesBDModel.FrienshipRequest" />
+          <EntitySet Name="FriendshipRequestSet" EntityType="CodeNamesBDModel.FriendshipRequest" />
           <EntitySet Name="FriendshipSet" EntityType="CodeNamesBDModel.Friendship" />
           <AssociationSet Name="PlayerFrienshipRequest" Association="CodeNamesBDModel.PlayerRequest_Sender">
             <End Role="Player" EntitySet="PlayerSet" />
-            <End Role="FrienshipRequest" EntitySet="FrienshipRequestSet" />
+            <End Role="FrienshipRequest" EntitySet="FriendshipRequestSet" />
           </AssociationSet>
           <AssociationSet Name="PlayerFrienshipRequest1" Association="CodeNamesBDModel.PlayerRequest_Receiver">
             <End Role="Player" EntitySet="PlayerSet" />
-            <End Role="FrienshipRequest" EntitySet="FrienshipRequestSet" />
+            <End Role="FrienshipRequest" EntitySet="FriendshipRequestSet" />
           </AssociationSet>
           <AssociationSet Name="PlayerFriendship" Association="CodeNamesBDModel.PlayerFriendship1">
             <End Role="Player" EntitySet="PlayerSet" />
@@ -126,14 +126,14 @@
         </EntityContainer>
         <EntityType Name="Player">
           <Key>
-            <PropertyRef Name="Player_Id" />
+            <PropertyRef Name="IdPlayer" />
           </Key>
-          <Property Name="Player_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPlayer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" Nullable="false" MaxLength="30" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="128" />
         </EntityType>
-        <EntityType Name="FrienshipRequest">
+        <EntityType Name="FriendshipRequest">
           <Key>
             <PropertyRef Name="IdFriendshipRequest" />
           </Key>
@@ -145,9 +145,9 @@
         </EntityType>
         <EntityType Name="Friendship">
           <Key>
-            <PropertyRef Name="IdFrienship" />
+            <PropertyRef Name="IdFriendship" />
           </Key>
-          <Property Name="IdFrienship" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFriendship" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Player1" Relationship="CodeNamesBDModel.PlayerFriendship1" FromRole="Friendship" ToRole="Player" />
           <Property Name="IdPlayer1" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Player2" Relationship="CodeNamesBDModel.PlayerFriendship2" FromRole="Friendship" ToRole="Player" />
@@ -155,10 +155,10 @@
         </EntityType>
         <Association Name="PlayerRequest_Sender">
           <End Type="CodeNamesBDModel.Player" Role="Player" Multiplicity="1" />
-          <End Type="CodeNamesBDModel.FrienshipRequest" Role="FrienshipRequest" Multiplicity="*" />
+          <End Type="CodeNamesBDModel.FriendshipRequest" Role="FrienshipRequest" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Player">
-              <PropertyRef Name="Player_Id" />
+              <PropertyRef Name="IdPlayer" />
             </Principal>
             <Dependent Role="FrienshipRequest">
               <PropertyRef Name="IdSenderPlayer" />
@@ -167,10 +167,10 @@
         </Association>
         <Association Name="PlayerRequest_Receiver">
           <End Type="CodeNamesBDModel.Player" Role="Player" Multiplicity="1" />
-          <End Type="CodeNamesBDModel.FrienshipRequest" Role="FrienshipRequest" Multiplicity="*" />
+          <End Type="CodeNamesBDModel.FriendshipRequest" Role="FrienshipRequest" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Player">
-              <PropertyRef Name="Player_Id" />
+              <PropertyRef Name="IdPlayer" />
             </Principal>
             <Dependent Role="FrienshipRequest">
               <PropertyRef Name="IdReceiverPlayer" />
@@ -182,7 +182,7 @@
           <End Type="CodeNamesBDModel.Friendship" Role="Friendship" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Player">
-              <PropertyRef Name="Player_Id" />
+              <PropertyRef Name="IdPlayer" />
             </Principal>
             <Dependent Role="Friendship">
               <PropertyRef Name="IdPlayer1" />
@@ -194,7 +194,7 @@
           <End Type="CodeNamesBDModel.Friendship" Role="Friendship" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Player">
-              <PropertyRef Name="Player_Id" />
+              <PropertyRef Name="IdPlayer" />
             </Principal>
             <Dependent Role="Friendship">
               <PropertyRef Name="IdPlayer2" />
@@ -210,16 +210,16 @@
     <EntitySetMapping Name="PlayerSet">
       <EntityTypeMapping TypeName="IsTypeOf(CodeNamesBDModel.Player)">
         <MappingFragment StoreEntitySet="PlayerSet">
-          <ScalarProperty Name="Player_Id" ColumnName="Player_Id" />
+          <ScalarProperty Name="IdPlayer" ColumnName="IdPlayer" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="FrienshipRequestSet">
-      <EntityTypeMapping TypeName="IsTypeOf(CodeNamesBDModel.FrienshipRequest)">
-        <MappingFragment StoreEntitySet="FrienshipRequestSet">
+    <EntitySetMapping Name="FriendshipRequestSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CodeNamesBDModel.FriendshipRequest)">
+        <MappingFragment StoreEntitySet="FriendshipRequestSet">
           <ScalarProperty Name="IdFriendshipRequest" ColumnName="IdFriendshipRequest" />
           <ScalarProperty Name="IdSenderPlayer" ColumnName="IdSenderPlayer" />
           <ScalarProperty Name="IdReceiverPlayer" ColumnName="IdReceiverPlayer" />
@@ -229,7 +229,7 @@
     <EntitySetMapping Name="FriendshipSet">
       <EntityTypeMapping TypeName="IsTypeOf(CodeNamesBDModel.Friendship)">
         <MappingFragment StoreEntitySet="FriendshipSet">
-          <ScalarProperty Name="IdFrienship" ColumnName="IdFrienship" />
+          <ScalarProperty Name="IdFriendship" ColumnName="IdFriendship" />
           <ScalarProperty Name="IdPlayer1" ColumnName="IdPlayer1" />
           <ScalarProperty Name="IdPlayer2" ColumnName="IdPlayer2" />
         </MappingFragment>
